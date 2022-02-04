@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Users/Sageras/OneDrive/Dropbox/HKU/University of Plymouth/Bachelor of Cybersecurity/2021/Sem01/COMP2000HK Software Engineering 2/Assessment/CW2/assessment-2-COMP2000HK-yiu.wong-1/Part1/app/src/main/res/layout/activity_main.xml" value="0.41938405797101447" />
+        <entry key="..\:/Users/Sageras/OneDrive/Dropbox/HKU/University of Plymouth/Bachelor of Cybersecurity/2021/Sem01/COMP2000HK Software Engineering 2/Assessment/CW2/assessment-2-COMP2000HK-yiu.wong-1/Part1/app/src/main/res/layout/activity_project_detail.xml" value="0.2368659420289855" />
+        <entry key="..\:/Users/Sageras/OneDrive/Dropbox/HKU/University of Plymouth/Bachelor of Cybersecurity/2021/Sem01/COMP2000HK Software Engineering 2/Assessment/CW2/assessment-2-COMP2000HK-yiu.wong-1/Part1/app/src/main/res/layout/activity_project_info.xml" value="0.4296875" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>
