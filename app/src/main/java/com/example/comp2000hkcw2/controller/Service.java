@@ -30,10 +30,13 @@ public interface Service {
 
     @Multipart
     @POST("students/{projectId}/image")
-    Call<ResponseBody> uploadImage(@Path("projectId") int projectId, @Part("photo") RequestBody photo, @Part MultipartBody.Part file);
+    Call<ResponseBody> uploadImage(@Path("projectId") int projectId,
+                                   @Part("photo") RequestBody photo,
+                                   @Part MultipartBody.Part file);
 
     @PUT("students/{projectId}")
-    Call<Void> update(@Path("projectId") int projectId, @Body Project project);
+    Call<Void> update(@Path("projectId") int projectId,
+                      @Body Project project);
 
     @DELETE("students/{projectId}")
     Call<Void> delete(@Path("projectId") int projectId);

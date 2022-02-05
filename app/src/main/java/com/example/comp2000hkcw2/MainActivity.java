@@ -8,6 +8,7 @@ import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
@@ -34,6 +35,8 @@ public class MainActivity extends AppCompatActivity {
     private String CHANNEL_ID = "channel";
     private int notificationId = 100;
     private Service service;
+
+    Uri imageUri;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -137,6 +140,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void uploadImage(Integer projectId) {
+
         File file = new File("/storage/emulated/0/Download/fireb01.jpg");
         if (!file.exists())
         {
