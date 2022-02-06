@@ -10,11 +10,11 @@
         android:id="@+id/tv"
         android:layout_width="246dp"
         android:layout_height="30dp"
-        android:text="Project Details"
         android:fontFamily="sans-serif-smallcaps"
-        android:textStyle="bold"
+        android:text="Project Details"
         android:textAlignment="center"
         android:textSize="24sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -26,16 +26,16 @@
         android:layout_marginTop="40dp"
         android:layout_weight="1"
         android:fontFamily="sans-serif-smallcaps"
-        android:textStyle="bold"
         android:text="Project ID"
         android:textSize="16sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/tvProjectId"
+        android:id="@+id/tvPIProjectId"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
@@ -53,15 +53,15 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:fontFamily="sans-serif-smallcaps"
-        android:textStyle="bold"
         android:text="Student ID"
         android:textSize="16sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvProjectId" />
+        app:layout_constraintTop_toBottomOf="@+id/tvPIProjectId" />
 
     <TextView
-        android:id="@+id/tvStudentId"
+        android:id="@+id/tvPIStudentId"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
@@ -79,15 +79,15 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:fontFamily="sans-serif-smallcaps"
-        android:textStyle="bold"
         android:text="First Name"
         android:textSize="16sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvStudentId" />
+        app:layout_constraintTop_toBottomOf="@+id/tvPIStudentId" />
 
     <TextView
-        android:id="@+id/tvFirstName"
+        android:id="@+id/tvPIFirstName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
@@ -105,15 +105,15 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:fontFamily="sans-serif-smallcaps"
-        android:textStyle="bold"
         android:text="Last Name"
         android:textSize="16sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvFirstName" />
+        app:layout_constraintTop_toBottomOf="@+id/tvPIFirstName" />
 
     <TextView
-        android:id="@+id/tvLastName"
+        android:id="@+id/tvPILastName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="2dp"
@@ -132,15 +132,15 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:fontFamily="sans-serif-smallcaps"
-        android:textStyle="bold"
         android:text="Title"
         android:textSize="16sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvLastName" />
+        app:layout_constraintTop_toBottomOf="@+id/tvPILastName" />
 
     <TextView
-        android:id="@+id/tvTitle"
+        android:id="@+id/tvPITitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
@@ -158,15 +158,15 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:fontFamily="sans-serif-smallcaps"
-        android:textStyle="bold"
         android:text="Description"
         android:textSize="16sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvTitle" />
+        app:layout_constraintTop_toBottomOf="@+id/tvPITitle" />
 
     <TextView
-        android:id="@+id/tvDesc"
+        android:id="@+id/tvPIDesc"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="1dp"
@@ -185,15 +185,15 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:fontFamily="sans-serif-smallcaps"
-        android:textStyle="bold"
         android:text="Year"
         android:textSize="16sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvDesc" />
+        app:layout_constraintTop_toBottomOf="@+id/tvPIDesc" />
 
     <TextView
-        android:id="@+id/tvYear"
+        android:id="@+id/tvPIYear"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
@@ -210,15 +210,15 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:fontFamily="sans-serif-smallcaps"
-        android:textStyle="bold"
         android:text="Thumbnail URL"
         android:textSize="16sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvYear" />
+        app:layout_constraintTop_toBottomOf="@+id/tvPIYear" />
 
     <TextView
-        android:id="@+id/tvThumbnailURL"
+        android:id="@+id/tvPIThumbnailURL"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
@@ -236,16 +236,16 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:fontFamily="sans-serif-smallcaps"
-        android:textStyle="bold"
         android:text="Poster URL"
         android:textSize="16sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvThumbnailURL" />
+        app:layout_constraintTop_toBottomOf="@+id/tvPIThumbnailURL" />
 
     <TextView
-        android:id="@+id/tvPosterURL"
+        android:id="@+id/tvPIPosterURL"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="2dp"
@@ -264,18 +264,18 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:fontFamily="sans-serif-smallcaps"
-        android:textStyle="bold"
         android:text="Project Image"
         android:textSize="16sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvPosterURL" />
+        app:layout_constraintTop_toBottomOf="@+id/tvPIPosterURL" />
 
     <ImageView
-        android:id="@+id/ivPhoto"
-        android:layout_width="408dp"
-        android:layout_height="0dp"
+        android:id="@+id/ivPIPhoto"
+        android:layout_width="404dp"
+        android:layout_height="223dp"
         android:layout_marginStart="10dp"
         android:layout_marginTop="30dp"
         android:layout_marginEnd="10dp"
@@ -283,7 +283,30 @@
         android:contentDescription="No Image"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.538"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv10" />
+        app:layout_constraintTop_toBottomOf="@+id/tv10"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/btnPIHome"
+        android:layout_width="185dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="16dp"
+        android:text="Home"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/btnPIEditInfo"
+        android:layout_width="185dp"
+        android:layout_height="48dp"
+        android:layout_marginEnd="16dp"
+        android:text="Edit Info"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/btnPIHome"
+        app:layout_constraintTop_toTopOf="@+id/btnPIHome" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

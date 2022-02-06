@@ -1,6 +1,6 @@
-package com.example.comp2000hkcw2.model;
+package com.example.comp2000hkcw2;
 
-public class Project {
+public class RecyclerData {
 
     private Integer projectID;
     private Integer studentID;
@@ -13,36 +13,11 @@ public class Project {
     private String posterURL;
     private String photo;
 
-    @Override
-    public String toString() {
-        return "Project{" +
-                "projectID=" + projectID +
-                ", studentID=" + studentID +
-                ", first_Name='" + first_Name + '\'' +
-                ", second_Name='" + second_Name + '\'' +
-                ", title='" + title + '\'' +
-                ", description='" + description + '\'' +
-                ", year=" + year +
-                ", thumbnailURL='" + thumbnailURL + '\'' +
-                ", posterURL='" + posterURL + '\'' +
-                ", photo='" + photo + '\'' +
-                '}';
-    }
-
     public Integer getProjectID() {
         return projectID;
     }
-
-    public void setProjectID(Integer projectID) {
-        this.projectID = projectID;
-    }
-
     public Integer getStudentID() {
         return studentID;
-    }
-
-    public void setStudentID(Integer studentID) {
-        this.studentID = studentID;
     }
 
     public String getFirst_Name() {
@@ -109,4 +84,16 @@ public class Project {
         this.photo = photo;
     }
 
+    public RecyclerData(Integer projectID, Integer studentID, String first_Name, String second_Name, String title, String description, Integer year, String thumbnailURL, String posterURL, String photo) {
+        this.projectID = projectID;
+        this.studentID = studentID;
+        this.first_Name = first_Name;
+        this.second_Name = second_Name;
+        this.title = title;
+        this.description = description;
+        this.year = year;
+        this.thumbnailURL = thumbnailURL;
+        this.posterURL = posterURL;
+        this.photo = photo;
+    }
 }

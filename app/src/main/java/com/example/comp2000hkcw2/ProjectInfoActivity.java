@@ -11,8 +11,8 @@ import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.comp2000hkcw2.controller.Manager;
-import com.example.comp2000hkcw2.controller.Service;
+import com.example.comp2000hkcw2.controller.ServiceGenerator;
+import com.example.comp2000hkcw2.controller.Interface;
 import com.example.comp2000hkcw2.model.Project;
 
 import retrofit2.Call;
@@ -21,7 +21,7 @@ import retrofit2.Response;
 
 public class ProjectInfoActivity extends AppCompatActivity {
 
-    private Service service;
+    private Interface anInterface;
 
     private TextView tvProjectId;
     private TextView tvStudentId;
@@ -39,24 +39,24 @@ public class ProjectInfoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_project_info);
 
-        this.service = Manager.getInstance().getService();
+        this.anInterface = ServiceGenerator.getInstance().getService();
 
-        this.tvProjectId = (TextView) findViewById(R.id.tvProjectId);
-        this.tvStudentId = (TextView) findViewById(R.id.tvStudentId);
-        this.tvFirstName = (TextView) findViewById(R.id.tvFirstName);
-        this.tvLastName = (TextView) findViewById(R.id.tvLastName);
-        this.tvTitle = (TextView) findViewById(R.id.tvTitle);
-        this.tvDesc = (TextView) findViewById(R.id.tvDesc);
-        this.tvYear = (TextView) findViewById(R.id.tvYear);
-        this.tvThumbnailURL = (TextView) findViewById(R.id.tvThumbnailURL);
-        this.tvPosterURL = (TextView) findViewById(R.id.tvPosterURL);
-        this.ivPhoto = (ImageView) findViewById(R.id.ivPhoto);
+        this.tvProjectId = (TextView) findViewById(R.id.tvPIProjectId);
+        this.tvStudentId = (TextView) findViewById(R.id.tvPIStudentId);
+        this.tvFirstName = (TextView) findViewById(R.id.tvPIFirstName);
+        this.tvLastName = (TextView) findViewById(R.id.tvPILastName);
+        this.tvTitle = (TextView) findViewById(R.id.tvPITitle);
+        this.tvDesc = (TextView) findViewById(R.id.tvPIDesc);
+        this.tvYear = (TextView) findViewById(R.id.tvPIYear);
+        this.tvThumbnailURL = (TextView) findViewById(R.id.tvPIThumbnailURL);
+        this.tvPosterURL = (TextView) findViewById(R.id.tvPIPosterURL);
+        this.ivPhoto = (ImageView) findViewById(R.id.ivPIPhoto);
 
         Intent intent = getIntent();
         Integer projectId = intent.getIntExtra("projectId", -1);
 
         //call API to get project by projectId
-        Call<Project> call = service.getProjectById(projectId);
+        Call<Project> call = anInterface.getProjectById(projectId);
         call.enqueue(new Callback<Project>() {
             @Override
             //Asynctask

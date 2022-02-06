@@ -17,10 +17,10 @@ import retrofit2.http.PUT;
 import retrofit2.http.Part;
 import retrofit2.http.Path;
 
-public interface Service {
+public interface Interface {
 
     @GET("students")
-    Call<List<Project>> listAllProjects();
+    Call<List<Project>> getAllProjects();
 
     @GET("students/{projectId}")
     Call<Project> getProjectById(@Path("projectId") int projectId);

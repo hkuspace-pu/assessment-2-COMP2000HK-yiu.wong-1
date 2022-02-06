@@ -1,61 +1,51 @@
 package com.example.comp2000hkcw2;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.NotificationCompat;
-import androidx.core.app.NotificationManagerCompat;
 
-import android.app.NotificationChannel;
-import android.app.NotificationManager;
-import android.app.PendingIntent;
 import android.content.Intent;
-import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
-import com.example.comp2000hkcw2.controller.Manager;
-import com.example.comp2000hkcw2.controller.Service;
+import com.example.comp2000hkcw2.controller.Interface;
+import com.example.comp2000hkcw2.controller.ServiceGenerator;
 import com.example.comp2000hkcw2.model.Project;
 
-import java.io.File;
 import java.util.List;
 
-import okhttp3.MediaType;
-import okhttp3.MultipartBody;
-import okhttp3.RequestBody;
-import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
 
-    private String CHANNEL_ID = "channel";
-    private int notificationId = 100;
-    private Service service;
-
-    Uri imageUri;
+    // private String CHANNEL_ID = "channel";
+    // private int notificationId = 100;
+    private Interface service;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        createNotificationChannel();
-        this.service = Manager.getInstance().getService();
+        // createNotificationChannel();
+        this.service = ServiceGenerator.getInstance().getService();
+
+        Button btnListAllProjects = findViewById(R.id.btnListAllProjects);
+        btnListAllProjects.setOnClickListener(view -> gotoShowAllProj());
 
         //showAllProjects();
-        //getProjectById(3775);
-        //createNewProject();
-        //uploadImage(3775);
-        //updateProject(3775);
-        //deleteProject(3775);
-    }
 
-    public void showAllProjects() {
+        }
 
-        Call<List<Project>> call = service.listAllProjects();
+        private void gotoShowAllProj() {
+            Intent intent = new Intent(this, ShowAllProjectsActivity.class);
+            startActivity(intent);
+            }
+
+        /* public void showAllProjects() {
+
+        Call<List<Project>> call = service.getAllProjects();
         call.enqueue(new Callback<List<Project>>() {
             @Override
             //Asynctask
@@ -84,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    public void getProjectById(Integer projectId) {
+    /* public void getProjectById(Integer projectId) {
         Call<Project> call = service.getProjectById(projectId);
         call.enqueue(new Callback<Project>() {
             @Override
@@ -225,7 +215,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-
     public void imageUploadedNotification(View view) {
         Intent intent = new Intent(this, MainActivity.class);
         intent.setAction(Intent.ACTION_MAIN);
@@ -248,7 +237,6 @@ public class MainActivity extends AppCompatActivity {
         builder.setContentText("Image Upload completed")
                 .setProgress(0, 0, false);
         notificationManager.notify(notificationId, builder.build());
-
     }
     
     private void createNotificationChannel() {
@@ -260,4 +248,6 @@ public class MainActivity extends AppCompatActivity {
             notificationManager.createNotificationChannel(channel);
         }
     }
+
+    */
 }
