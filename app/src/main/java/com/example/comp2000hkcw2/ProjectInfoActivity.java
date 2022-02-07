@@ -69,46 +69,43 @@ public class ProjectInfoActivity extends AppCompatActivity {
         Intent intent = getIntent();
         Integer projectId = intent.getIntExtra("projectId", -1);
 
-            //call API to get project by projectId
-            Call<Project> call = service.getProjectById(projectId);
-            call.enqueue(new Callback<Project>() {
+        //call API to get project by projectId
+        Call<Project> call = service.getProjectById(projectId);
+        call.enqueue(new Callback<Project>() {
             @Override
             public void onResponse(Call<Project> call, Response<Project> response) {
                 Project project = response.body();
-                if (project == null)
-                {
+                if (project == null) {
                     Log.d("[d]", "Project NOT Found!");
-                }
-                else
-                {
+                } else {
                     tvProjectId.setText(project.getProjectID().toString());
                     tvStudentId.setText(project.getStudentID().toString());
 
-                    if(project.getFirst_Name() != null) {
+                    if (project.getFirst_Name() != null) {
                         etFirstName.setText(project.getFirst_Name());
                     }
 
-                    if(project.getSecond_Name() != null) {
+                    if (project.getSecond_Name() != null) {
                         etLastName.setText(project.getSecond_Name());
                     }
 
-                    if(project.getTitle() != null) {
+                    if (project.getTitle() != null) {
                         etTitle.setText(project.getTitle());
                     }
 
-                    if(project.getDescription() != null) {
+                    if (project.getDescription() != null) {
                         etDesc.setText(project.getDescription());
                     }
 
-                    if(project.getYear() != null) {
+                    if (project.getYear() != null) {
                         etYear.setText(project.getYear().toString());
                     }
 
-                    if(project.getThumbnailURL() != null) {
+                    if (project.getThumbnailURL() != null) {
                         etThumbnailURL.setText(project.getThumbnailURL());
                     }
 
-                    if(project.getPosterURL() != null) {
+                    if (project.getPosterURL() != null) {
                         etPosterURL.setText(project.getPosterURL());
                     }
 
@@ -120,6 +117,7 @@ public class ProjectInfoActivity extends AppCompatActivity {
                     }
                 }
             }
+
             @Override
             public void onFailure(Call call, Throwable t) {
                 Log.d("[d]", "Error: " + t);
@@ -127,50 +125,57 @@ public class ProjectInfoActivity extends AppCompatActivity {
         });
     }
 
-        public void gotoBackHome() {
-            Intent intent = new Intent(ProjectInfoActivity.this, MainActivity.class);
-            startActivity(intent);
-        }
+    public void gotoBackHome() {
+        Intent intent = new Intent(ProjectInfoActivity.this, MainActivity.class);
+        startActivity(intent);
+    }
 
-        public void gotoEditInfo() {
-        /*    AlertDialog.Builder alert = new AlertDialog.Builder(ProjectInfoActivity.this);
-            alert.setTitle("Edit Confirmation");
-            alert.setMessage("CONFIRM Edit?");
-            alert.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+    public void gotoEditInfo() { }
+  /*      AlertDialog.Builder alert = new AlertDialog.Builder(ProjectInfoActivity.this);
+        alert.setTitle("Edit Confirmation");
+        alert.setMessage("CONFIRM Edit?");
+        alert.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
 
-                Project project = new Project();
-                project.setTitle("Testing ABC");
-                project.setDescription("Tester Project Revised");
-                project.setYear(2022);
-                project.setThumbnailURL("http://www.google.com");
-                project.setPosterURL("http://www.google.com");
+            Project project = new Project();
+                project.setTitle();
+                project.setDescription();
+                project.setYear();
+                project.setThumbnailURL();
+                project.setPosterURL();
 
-                String str = tvProjectId.getText().toString();
-                Integer projectId = Integer.parseInt(str);
-                Call<Void> call = service.update(projectId, project);
+            String str = tvProjectId.getText().toString();
+            Integer projectId = Integer.parseInt(str);
+            Call<Void> call = service.update(projectId, project);
                 call.enqueue(new Callback<Void>()
-                {
-                    @Override
-                    //Asynctask
-                    public void onResponse (Call < Void > call, Response < Void > response){
-                    int code = response.code();
-                    Log.d("[d]", "response status: " + code);
-                    if (code == 204) {
-                        //Log.d("[d]", "Project " + projectId + " Info Updated!");
-                        Toast.makeText(getApplicationContext(), "Project Info Updated!", Toast.LENGTH_LONG).show();
-                    }
-                }
 
-                    @Override
-                    public void onFailure (Call call, Throwable t){
-                    Log.d("[d]", "Error: " + t.toString());
+            {
+                @Override
+                public void onResponse (Call < Void > call, Response < Void > response){
+                int code = response.code();
+                Log.d("[d]", "response status: " + code);
+                if (code == 204) {
+                    //Log.d("[d]", "Project " + projectId + " Info Updated!");
+                    Toast.makeText(getApplicationContext(), "Project Info Updated!", Toast.LENGTH_LONG).show();
                 }
-                });
-
+            }
+                @Override
+                public void onFailure (Call call, Throwable t){
+                Log.d("[d]", "Error: " + t.toString());
+            }
+            });
+                dialog.dismiss();
             });
 
-         */
+            alert.setNegativeButton("No", new DialogInterface.OnClickListener() {
 
-        }
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+
+        alert.show();
+    }
+
+   */
 }
-

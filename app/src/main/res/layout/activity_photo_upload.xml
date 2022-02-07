@@ -16,21 +16,18 @@
     </ImageView>
 
     <Button
-        android:id="@+id/btnPUUpload"
+        android:id="@+id/btnUImg"
         android:layout_width="202dp"
         android:layout_height="84dp"
         android:layout_below="@+id/ivPUImage"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="105dp"
-        android:layout_marginTop="163dp"
-        android:layout_marginEnd="104dp"
-        android:layout_marginBottom="208dp"
-        tools:ignore="OnClick"
+        android:layout_marginStart="103dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="106dp"
         android:onClick="imageUploadedNotification"
         android:text="Upload"
-        />
+        tools:ignore="OnClick" />
 
 
 </RelativeLayout>

@@ -36,6 +36,8 @@ public class CreateNewActivity extends AppCompatActivity {
 
         this.service = ServiceGenerator.getInstance().getService();
 
+        btnCPCreateProj = findViewById(R.id.btnCProj);
+
         btnCPCreateProj.setOnClickListener(View -> gotoCreateProj());
 
         this.etStudentId = (EditText) findViewById(R.id.etCNStudentId);
@@ -47,8 +49,8 @@ public class CreateNewActivity extends AppCompatActivity {
 
     }
 
-        public void gotoCreateProj() {}
-/*      Project p01 = new Project();
+    public void gotoCreateProj() {
+        Project p01 = new Project();
         p01.setStudentID(R.id.etCNStudentId);
         p01.setTitle(etTitle.getText().toString());
         p01.setDescription(etDesc.getText().toString());
@@ -62,8 +64,7 @@ public class CreateNewActivity extends AppCompatActivity {
             public void onResponse(Call<Void> call, Response<Void> response) {
                 int code = response.code();
                 Log.d("[d]", "response status code: " + code);
-                if (code == 201)
-                {
+                if (code == 201) {
                     Log.d("[d]", "Project Created!");
                     Toast.makeText(getApplicationContext(), "Project Created Successfully!", Toast.LENGTH_LONG).show();
                 }
@@ -75,36 +76,4 @@ public class CreateNewActivity extends AppCompatActivity {
             }
         });
     }
-
-        /*{
-            if (etStudentId.getText().toString().isEmpty()) {
-                Toast.makeText(CreateNewActivity.this, "Must Fill in Student ID!", Toast.LENGTH_SHORT).show();
-                return;
-            }
-            postProject(etStudentId.getText().toString(), etFirstName.getText().toString(), etLastName.getText().toString(), etTitle.getText().toString(), etDesc.getText().toString(), etYear.getText().toString());
-        });
-    }
-
-    private void postProject(String studentId, String firstName, String lastName, String title, String desc, String year) {
-
-        Project project = new Project();
-        Call<Void> call = service.create(project);
-        call.enqueue(new Callback<Void>() {
-            @Override
-            public void onResponse(Call<Void> call, Response<Void> response) {
-                int code = response.code();
-                Log.d("[d]", "response status code: " + code);
-                if (code == 201) {
-                    Log.d("[d]", "Project Created!");
-                    Toast.makeText(CreateNewActivity.this, "Project Created Successfully!", Toast.LENGTH_LONG).show();
-                }
-            }
-
-            @Override
-            public void onFailure(Call call, Throwable t) {
-                Log.d("[d]", "Error: " + t.toString());
-            }
-        });
-
-         */
 }

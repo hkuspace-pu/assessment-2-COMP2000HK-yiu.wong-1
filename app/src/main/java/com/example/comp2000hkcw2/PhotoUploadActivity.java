@@ -35,7 +35,8 @@ public class PhotoUploadActivity extends AppCompatActivity {
 
         this.service = ServiceGenerator.getInstance().getService();
 
-        ivPUImage = (ImageView) findViewById(R.id.ivProjPhoto);
+        ivPUImage = findViewById(R.id.ivProjPhoto);
+        btnPUUpload = findViewById(R.id.btnUImg);
 
         btnPUUpload.setOnClickListener(View -> {
 
