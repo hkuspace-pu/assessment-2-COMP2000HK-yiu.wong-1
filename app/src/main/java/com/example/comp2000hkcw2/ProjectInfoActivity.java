@@ -8,11 +8,13 @@ import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.util.Base64;
 import android.util.Log;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.comp2000hkcw2.controller.ServiceGenerator;
-import com.example.comp2000hkcw2.controller.Interface;
+import com.example.comp2000hkcw2.controller.Service;
 import com.example.comp2000hkcw2.model.Project;
 
 import retrofit2.Call;
@@ -21,7 +23,9 @@ import retrofit2.Response;
 
 public class ProjectInfoActivity extends AppCompatActivity {
 
-    private Interface anInterface;
+    Bundle intentExtra;
+
+    private Service service;
 
     private TextView tvProjectId;
     private TextView tvStudentId;
@@ -34,12 +38,23 @@ public class ProjectInfoActivity extends AppCompatActivity {
     private TextView tvPosterURL;
     private ImageView ivPhoto;
 
+    private Button btnPIHome;
+    private Button btnPIEditInfo;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_project_info);
 
-        this.anInterface = ServiceGenerator.getInstance().getService();
+        this.service = ServiceGenerator.getInstance().getService();
+
+        btnPIHome.setOnClickListener(View -> {
+            Intent i = new Intent(ProjectInfoActivity.this, MainActivity.class);
+        });
+
+        btnPIEditInfo.setOnClickListener(View -> {
+
+        });
 
         this.tvProjectId = (TextView) findViewById(R.id.tvPIProjectId);
         this.tvStudentId = (TextView) findViewById(R.id.tvPIStudentId);
@@ -52,14 +67,20 @@ public class ProjectInfoActivity extends AppCompatActivity {
         this.tvPosterURL = (TextView) findViewById(R.id.tvPIPosterURL);
         this.ivPhoto = (ImageView) findViewById(R.id.ivPIPhoto);
 
-        Intent intent = getIntent();
-        Integer projectId = intent.getIntExtra("projectId", -1);
+        intentExtra = getIntent().getExtras();
 
-        //call API to get project by projectId
-        Call<Project> call = anInterface.getProjectById(projectId);
-        call.enqueue(new Callback<Project>() {
+        if(intentExtra != null) {
+            String projectIDMA = intentExtra.getString("maProjectID");
+            tvProjectId.setText(projectIDMA);
+        }
+
+        Intent intent = getIntent();
+        Integer projectId = intent.getIntExtra(R.id.tvPIProjectId);
+
+            //call API to get project by projectId
+            Call<Project> call = service.getProjectById(projectId);
+            call.enqueue(new Callback<Project>() {
             @Override
-            //Asynctask
             public void onResponse(Call<Project> call, Response<Project> response) {
                 Project project = response.body();
                 if (project == null)

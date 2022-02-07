@@ -7,11 +7,11 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.example.comp2000hkcw2.controller.ServiceGenerator;
-import com.example.comp2000hkcw2.controller.Interface;
+import com.example.comp2000hkcw2.controller.Service;
 
 public class CreateNewProjectActivity extends AppCompatActivity {
 
-    private Interface anInterface;
+    private Service anService;
 
     private EditText etStudentId;
     private EditText etFirstName;
@@ -27,7 +27,7 @@ public class CreateNewProjectActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_new_project);
 
-        this.anInterface = ServiceGenerator.getInstance().getService();
+        this.anService = ServiceGenerator.getInstance().getService();
 
         this.etStudentId = (EditText) findViewById(R.id.etStudentId);
         this.etFirstName = (EditText) findViewById(R.id.etFirstName);

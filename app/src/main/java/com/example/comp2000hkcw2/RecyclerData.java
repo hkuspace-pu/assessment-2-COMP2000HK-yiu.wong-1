@@ -16,8 +16,17 @@ public class RecyclerData {
     public Integer getProjectID() {
         return projectID;
     }
+
+    public void setProjectID(Integer projectID) {
+        this.projectID = projectID;
+    }
+
     public Integer getStudentID() {
         return studentID;
+    }
+
+    public void setStudentID(Integer studentID) {
+        this.studentID = studentID;
     }
 
     public String getFirst_Name() {

@@ -10,22 +10,21 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class ServiceGenerator {
     private static ServiceGenerator instance = new ServiceGenerator();
 
-    private Interface service;
-    private static Gson gson;
+    private Service service;
     private static Retrofit retrofit;
+    private static Gson gson;
 
     private ServiceGenerator() {
 
-        gson = new GsonBuilder()
-                .create();
+        gson = new GsonBuilder().create();
 
-        if(retrofit == null) {
-            Retrofit retrofit = new Retrofit.Builder()
+        if (retrofit == null) {
+            retrofit = new Retrofit.Builder()
                     .baseUrl("http://web.socem.plymouth.ac.uk/COMP2000/api/")
                     .addConverterFactory(GsonConverterFactory.create())
                     .build();
 
-            this.service = retrofit.create(Interface.class);
+            this.service = retrofit.create(Service.class);
         }
     }
 
@@ -33,7 +32,7 @@ public class ServiceGenerator {
         return instance;
     }
 
-    public Interface getService() {
+    public Service getService() {
         return this.service;
     }
 

@@ -6,42 +6,136 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
-import android.widget.Toast;
+import android.widget.EditText;
 
-import com.example.comp2000hkcw2.controller.Interface;
+import com.example.comp2000hkcw2.controller.Service;
 import com.example.comp2000hkcw2.controller.ServiceGenerator;
-import com.example.comp2000hkcw2.model.Project;
-
-import java.util.List;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
 
+    private Service service;
+    EditText etProjectID;
+    Button btnSearchById;
+    Button btnListAllProjects;
+    Button btnCreateNew;
+    Button btnUpdate;
+    Button btnDeleteProj;
+    Button btnProjImageUpload;
+
     // private String CHANNEL_ID = "channel";
     // private int notificationId = 100;
-    private Interface service;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        // createNotificationChannel();
+        //createNotificationChannel();
         this.service = ServiceGenerator.getInstance().getService();
 
-        Button btnListAllProjects = findViewById(R.id.btnListAllProjects);
+        etProjectID = findViewById(R.id.etMAProjectId);
+
+        btnSearchById = findViewById(R.id.btnSearchById);
+        btnListAllProjects = findViewById(R.id.btnListAllProjects);
+        btnCreateNew = findViewById(R.id.btnCreateNew);
+        btnUpdate = findViewById(R.id.btnUpdateProj);
+        btnDeleteProj = findViewById(R.id.btnDeleteProj);
+        btnProjImageUpload = findViewById(R.id.btnProjImageUpload);
+
+        btnSearchById.setOnClickListener(view -> {
+            String projectIDMA = etProjectID.getText().toString();
+            Intent intent = new Intent(MainActivity.this, ProjectInfoActivity.class);
+            intent.putExtra("maProjectID", projectIDMA);
+            startActivity(intent);
+        });
+
         btnListAllProjects.setOnClickListener(view -> gotoShowAllProj());
 
-        //showAllProjects();
+        btnCreateNew.setOnClickListener(view -> gotoCreateNew());
 
-        }
+        btnUpdate.setOnClickListener(view -> gotoProjUpdate());
 
-        private void gotoShowAllProj() {
-            Intent intent = new Intent(this, ShowAllProjectsActivity.class);
-            startActivity(intent);
+        btnDeleteProj.setOnClickListener(view -> gotoDeleteProj());
+
+        btnProjImageUpload.setOnClickListener(view -> gotoProjImgUpload());
+
+    }
+
+    private void gotoShowAllProj() {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                showAllProj();
             }
+        }).start();
+    }
+
+    public void showAllProj() {
+        try {
+            Intent intent = new Intent(MainActivity.this, ShowAllProjectsActivity.class);
+            startActivity(intent);
+
+        } catch (Exception e) {
+            Log.e("[e]", "Error: " + e.toString());
+        }
+    }
+
+
+    private void gotoProjUpdate() {
+
+    }
+
+    private void gotoCreateNew() {
+
+    }
+
+    private void gotoDeleteProj() {
+
+    }
+
+    private void gotoProjImgUpload() {
+
+    }
+
+    /*
+
+        public void imageUploadedNotification(View view) {
+        Intent intent = new Intent(this, MainActivity.class);
+        intent.setAction(Intent.ACTION_MAIN);
+        intent.addCategory(Intent.CATEGORY_LAUNCHER);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, 0);
+
+        NotificationManagerCompat notificationManager = NotificationManagerCompat.from(this);
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(this, CHANNEL_ID);
+        builder.setContentTitle("Image Upload")
+                .setContentText("Upload in progress")
+                .setSmallIcon(R.drawable.noti)
+                .setPriority(NotificationCompat.PRIORITY_LOW);
+
+        int PROGRESS_MAX = 100;
+        int PROGRESS_CURRENT = 0;
+        builder.setProgress(PROGRESS_MAX, PROGRESS_CURRENT, false);
+        notificationManager.notify(notificationId, builder.build());
+
+        builder.setContentText("Image Upload completed")
+                .setProgress(0, 0, false);
+        notificationManager.notify(notificationId, builder.build());
+    }
+
+    private void createNotificationChannel() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            int importance = NotificationManager.IMPORTANCE_DEFAULT;
+            NotificationChannel channel = new NotificationChannel(CHANNEL_ID, "channel", importance);
+            channel.setDescription("My Notification");
+            NotificationManager notificationManager = getSystemService(NotificationManager.class);
+            notificationManager.createNotificationChannel(channel);
+        }
+    }
+
+    */
+}
+
+
 
         /* public void showAllProjects() {
 
@@ -215,39 +309,5 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-    public void imageUploadedNotification(View view) {
-        Intent intent = new Intent(this, MainActivity.class);
-        intent.setAction(Intent.ACTION_MAIN);
-        intent.addCategory(Intent.CATEGORY_LAUNCHER);
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, 0);
 
-        NotificationManagerCompat notificationManager = NotificationManagerCompat.from(this);
-        NotificationCompat.Builder builder = new NotificationCompat.Builder(this, CHANNEL_ID);
-        builder.setContentTitle("Image Upload")
-                .setContentText("Upload in progress")
-                .setSmallIcon(R.drawable.noti)
-                .setPriority(NotificationCompat.PRIORITY_LOW);
-
-        int PROGRESS_MAX = 100;
-        int PROGRESS_CURRENT = 0;
-        builder.setProgress(PROGRESS_MAX, PROGRESS_CURRENT, false);
-        notificationManager.notify(notificationId, builder.build());
-
-        builder.setContentText("Image Upload completed")
-                .setProgress(0, 0, false);
-        notificationManager.notify(notificationId, builder.build());
-    }
-    
-    private void createNotificationChannel() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            int importance = NotificationManager.IMPORTANCE_DEFAULT;
-            NotificationChannel channel = new NotificationChannel(CHANNEL_ID, "channel", importance);
-            channel.setDescription("My Notification");
-            NotificationManager notificationManager = getSystemService(NotificationManager.class);
-            notificationManager.createNotificationChannel(channel);
-        }
-    }
-
-    */
-}
+         */

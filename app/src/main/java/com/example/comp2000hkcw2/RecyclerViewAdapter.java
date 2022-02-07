@@ -1,9 +1,6 @@
 package com.example.comp2000hkcw2;
 
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,10 +11,11 @@ import androidx.appcompat.widget.AppCompatTextView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.comp2000hkcw2.model.Project;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
-public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.RecyclerViewHolder> {
+    /* public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.RecyclerViewHolder> {
     private Context context;
     private List<Project> projectList;
     private Project tvProject;
@@ -30,7 +28,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     @NonNull
     @Override
     public RecyclerViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        View view = LayoutInflater.from(context).inflate(R.layout.list_layout, viewGroup, false);
+        View view = LayoutInflater.from(context).inflate(R.layout.card_layout, viewGroup, false);
         return new RecyclerViewHolder(view);
     }
 
@@ -39,14 +37,19 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         tvProject = projectList.get(i);
         holder.tvProjectID.setText(tvProject.getProjectID());
         holder.tvStudentID.setText(tvProject.getStudentID());
+        holder.tvTitle.setText(tvProject.getTitle());
+        holder.tvYear.setText(tvProject.getYear());
         holder.tvFirstName.setText(tvProject.getFirst_Name());
         holder.tvSecondName.setText(tvProject.getSecond_Name());
-        holder.tvYear.setText(tvProject.getYear());
-        String photoBase64Str = tvProject.getPhoto();
+        Picasso.get().load(tvProject.getPhoto())
+                .resize(50,50)
+                .into(holder.imgProjPhoto);
+
+        /* String photoBase64Str = tvProject.getPhoto();
         byte[] bytes = Base64.decode(photoBase64Str, Base64.DEFAULT);
         Bitmap bitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
-        holder.imgProjPhoto.setImageBitmap(bitmap);
-    }
+        holder.imgProjPhoto.setImageBitmap(bitmap); */
+/*    }
 
     @Override
     public int getItemCount() {
@@ -55,15 +58,17 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     
     public class RecyclerViewHolder extends RecyclerView.ViewHolder {
         private AppCompatImageView imgProjPhoto;
-        private AppCompatTextView tvProjectID, tvStudentID, tvFirstName, tvSecondName, tvYear;
+        private AppCompatTextView tvProjectID, tvStudentID, tvTitle, tvYear, tvFirstName, tvSecondName;
         public RecyclerViewHolder(@NonNull View itemView) {
             super(itemView);
-            imgProjPhoto = (AppCompatImageView) itemView.findViewById(R.id.ivProjPhoto);
             tvProjectID = (AppCompatTextView) itemView.findViewById(R.id.tvLLProjectID);
             tvStudentID = (AppCompatTextView) itemView.findViewById(R.id.tvLLStudentID);
+            imgProjPhoto = (AppCompatImageView) itemView.findViewById(R.id.ivProjPhoto);
+            tvTitle = (AppCompatTextView) itemView.findViewById(R.id.tvLLTitle);
+            tvYear = (AppCompatTextView) itemView.findViewById(R.id.tvLLYear);
             tvFirstName = (AppCompatTextView) itemView.findViewById(R.id.tvLLFirstName);
             tvSecondName = (AppCompatTextView) itemView.findViewById(R.id.tvLLSecondName);
-            tvYear = (AppCompatTextView) itemView.findViewById(R.id.tvLLYear);
         }
     }
 }
+ */
