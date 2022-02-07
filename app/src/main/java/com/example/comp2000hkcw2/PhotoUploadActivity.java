@@ -49,6 +49,8 @@ public class PhotoUploadActivity extends AppCompatActivity {
                 MultipartBody.Part part = MultipartBody.Part.createFormData("file", file.getName(), requestFile);
                 RequestBody requestBody = RequestBody.create(MediaType.parse("multipart/form-data"), "file");
 
+                Log.d("[d]", "on click XXXXXXXXXXXXXXXX");
+
                 Intent intent = getIntent();
                 Integer projectId = intent.getIntExtra("projectId", -1);
                 Call<ResponseBody> call = service.uploadImage(projectId, requestBody, part);

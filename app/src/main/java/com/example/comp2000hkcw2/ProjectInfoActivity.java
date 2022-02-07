@@ -69,6 +69,9 @@ public class ProjectInfoActivity extends AppCompatActivity {
         Intent intent = getIntent();
         Integer projectId = intent.getIntExtra("projectId", -1);
 
+        Project project = new Project();
+        project.setTitle("AAA");
+
         //call API to get project by projectId
         Call<Project> call = service.getProjectById(projectId);
         call.enqueue(new Callback<Project>() {
@@ -130,40 +133,48 @@ public class ProjectInfoActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void gotoEditInfo() { }
-  /*      AlertDialog.Builder alert = new AlertDialog.Builder(ProjectInfoActivity.this);
-        alert.setTitle("Edit Confirmation");
-        alert.setMessage("CONFIRM Edit?");
-        alert.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+    public void gotoEditInfo() {
+            AlertDialog.Builder alert = new AlertDialog.Builder(ProjectInfoActivity.this);
 
-            Project project = new Project();
-                project.setTitle();
-                project.setDescription();
-                project.setYear();
-                project.setThumbnailURL();
-                project.setPosterURL();
+            alert.setTitle("Edit Confirmation");
+            alert.setMessage("CONFIRM Edit?");
 
-            String str = tvProjectId.getText().toString();
-            Integer projectId = Integer.parseInt(str);
-            Call<Void> call = service.update(projectId, project);
-                call.enqueue(new Callback<Void>()
-
-            {
+            alert.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                 @Override
-                public void onResponse (Call < Void > call, Response < Void > response){
-                int code = response.code();
-                Log.d("[d]", "response status: " + code);
-                if (code == 204) {
-                    //Log.d("[d]", "Project " + projectId + " Info Updated!");
-                    Toast.makeText(getApplicationContext(), "Project Info Updated!", Toast.LENGTH_LONG).show();
+                public void onClick(DialogInterface dialog, int i) {
+
+                    Project project = new Project();
+                    project.setTitle(etTitle.getText().toString());
+                    project.setDescription(etDesc.getText().toString());
+                    project.setYear(R.id.etCNYear);
+                    project.setFirst_Name(etFirstName.getText().toString());
+                    project.setSecond_Name(etLastName.getText().toString());
+                    project.setPosterURL(etPosterURL.getText().toString());
+                    project.setThumbnailURL(etThumbnailURL.getText().toString());
+
+
+                    String str = tvProjectId.getText().toString();
+                    Integer projectId = Integer.parseInt(str);
+                    Call<Void> call = service.update(projectId, project);
+                    call.enqueue(new Callback<Void>() {
+                        @Override
+                        public void onResponse(Call<Void> call, Response<Void> response) {
+                            int code = response.code();
+                            Log.d("[d]", "response status: " + code);
+                            if (code == 204) {
+                                //Log.d("[d]", "Project " + projectId + " Info Updated!");
+                                Toast.makeText(getApplicationContext(), "Project Info Updated!", Toast.LENGTH_LONG).show();
+                            }
+                        }
+
+                        @Override
+                        public void onFailure(Call call, Throwable t) {
+                            Log.d("[d]", "Error: " + t.toString());
+                        }
+                    });
+
+                    dialog.dismiss();
                 }
-            }
-                @Override
-                public void onFailure (Call call, Throwable t){
-                Log.d("[d]", "Error: " + t.toString());
-            }
-            });
-                dialog.dismiss();
             });
 
             alert.setNegativeButton("No", new DialogInterface.OnClickListener() {
@@ -177,5 +188,4 @@ public class ProjectInfoActivity extends AppCompatActivity {
         alert.show();
     }
 
-   */
 }
