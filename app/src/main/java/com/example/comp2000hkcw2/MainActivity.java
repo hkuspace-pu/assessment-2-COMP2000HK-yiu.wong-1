@@ -97,7 +97,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void gotoProjInfo() {
         if (etProjectID.getText().toString().isEmpty()) {
-            Toast.makeText(MainActivity.this, "Please Enter Project ID!", Toast.LENGTH_LONG).show();
+            Toast.makeText(MainActivity.this, "Please Enter Project ID!", Toast.LENGTH_SHORT).show();
             return;
         } else {
             String str = this.etProjectID.getText().toString();
@@ -110,7 +110,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void gotoProjUpdate() {
         if (etProjectID.getText().toString().isEmpty()) {
-            Toast.makeText(MainActivity.this, "Please Enter Project ID!", Toast.LENGTH_LONG).show();
+            Toast.makeText(MainActivity.this, "Please Enter Project ID!", Toast.LENGTH_SHORT).show();
             return;
         } else {
             String str = this.etProjectID.getText().toString();
@@ -122,53 +122,58 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void gotoDeleteProj() {
-        AlertDialog.Builder alert = new AlertDialog.Builder(MainActivity.this);
-        alert.setTitle("Project Delete Confirmation");
-        alert.setMessage("CONFIRM DELETE?");
-        alert.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+        if (etProjectID.getText().toString().isEmpty()) {
+            Toast.makeText(MainActivity.this, "Please Enter Project ID!", Toast.LENGTH_SHORT).show();
+            return;
+        } else {
+            AlertDialog.Builder alert = new AlertDialog.Builder(MainActivity.this);
+            alert.setTitle("Project Delete Confirmation");
+            alert.setMessage("CONFIRM DELETE?");
+            alert.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
 
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                etProjectID = findViewById(R.id.etMAProjectId);
-                String str = etProjectID.getText().toString();
-                Integer projectId = Integer.parseInt(str);
-                Call<Void> call = service.delete(projectId);
-                call.enqueue(new Callback<Void>() {
-                    @Override
-                    //Asynctask
-                    public void onResponse(Call<Void> call, Response<Void> response) {
-                        int code = response.code();
-                        Log.d("[d]", "response status code: " + code);
-                        if (code == 204) {
-                            //Log.d("[d]", "Project " + projectId + " Deleted");
-                            Toast.makeText(getApplicationContext(), "Project Deleted!", Toast.LENGTH_LONG).show();
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    etProjectID = findViewById(R.id.etMAProjectId);
+                    String str = etProjectID.getText().toString();
+                    Integer projectId = Integer.parseInt(str);
+                    Call<Void> call = service.delete(projectId);
+                    call.enqueue(new Callback<Void>() {
+                        @Override
+                        //Asynctask
+                        public void onResponse(Call<Void> call, Response<Void> response) {
+                            int code = response.code();
+                            Log.d("[d]", "response status code: " + code);
+                            if (code == 204) {
+                                //Log.d("[d]", "Project " + projectId + " Deleted");
+                                Toast.makeText(getApplicationContext(), "Project Deleted!", Toast.LENGTH_LONG).show();
+                            }
                         }
-                    }
 
-                    @Override
-                    public void onFailure(Call call, Throwable t) {
-                        Log.d("[d]", "Error: " + t.toString());
-                    }
-                });
+                        @Override
+                        public void onFailure(Call call, Throwable t) {
+                            Log.d("[d]", "Error: " + t.toString());
+                        }
+                    });
 
-                dialog.dismiss();
-            }
-        });
+                    dialog.dismiss();
+                }
+            });
 
-        alert.setNegativeButton("No", new DialogInterface.OnClickListener() {
+            alert.setNegativeButton("No", new DialogInterface.OnClickListener() {
 
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.dismiss();
-            }
-        });
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    dialog.dismiss();
+                }
+            });
 
-        alert.show();
+            alert.show();
+        }
     }
 
     private void gotoProjImgUpload() {
         if (etProjectID.getText().toString().isEmpty()) {
-            Toast.makeText(MainActivity.this, "Please Enter Project ID!", Toast.LENGTH_LONG).show();
+            Toast.makeText(MainActivity.this, "Please Enter Project ID!", Toast.LENGTH_SHORT).show();
             return;
         } else {
             String str = this.etProjectID.getText().toString();

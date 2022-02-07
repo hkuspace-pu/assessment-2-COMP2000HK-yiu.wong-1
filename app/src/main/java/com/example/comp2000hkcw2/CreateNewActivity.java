@@ -36,6 +36,8 @@ public class CreateNewActivity extends AppCompatActivity {
 
         this.service = ServiceGenerator.getInstance().getService();
 
+        btnCPCreateProj.setOnClickListener(View -> gotoCreateProj());
+
         this.etStudentId = (EditText) findViewById(R.id.etCNStudentId);
         this.etFirstName = (EditText) findViewById(R.id.etCNFirstName);
         this.etLastName = (EditText) findViewById(R.id.etCNLastName);
@@ -43,11 +45,10 @@ public class CreateNewActivity extends AppCompatActivity {
         this.etDesc = (EditText) findViewById(R.id.etCNDesc);
         this.etYear = (EditText) findViewById(R.id.etCNYear);
 
-        btnCPCreateProj.setOnClickListener(View -> gotoCreateProj());
     }
 
         public void gotoCreateProj() {}
-/*        Project p01 = new Project();
+/*      Project p01 = new Project();
         p01.setStudentID(R.id.etCNStudentId);
         p01.setTitle(etTitle.getText().toString());
         p01.setDescription(etDesc.getText().toString());
