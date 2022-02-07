@@ -4,86 +4,86 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CreateNewProjectActivity">
+    tools:context=".CreateNewActivity">
 
     <Button
         android:id="@+id/btnCreateProject"
         android:layout_width="222dp"
         android:layout_height="93dp"
-        android:layout_marginBottom="132dp"
+        android:layout_marginTop="68dp"
         android:text="Create New Project"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etYear"
-        app:layout_constraintVertical_bias="0.929" />
+        app:layout_constraintTop_toBottomOf="@+id/etCNYear"
+        app:layout_constraintVertical_bias="0.0" />
 
     <EditText
-        android:id="@+id/etStudentId"
+        android:id="@+id/etCNStudentId"
         android:layout_width="386dp"
         android:layout_height="50dp"
         android:layout_marginTop="20dp"
         android:ems="10"
         android:inputType="number"
-        android:text="Student ID"
-        app:layout_constraintEnd_toEndOf="@+id/etFirstName"
+        android:hint="Student ID"
+        app:layout_constraintEnd_toEndOf="@+id/etCNFirstName"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/etFirstName"
+        android:id="@+id/etCNFirstName"
         android:layout_width="386dp"
         android:layout_height="50dp"
         android:layout_marginTop="20dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="First Name"
-        app:layout_constraintEnd_toEndOf="@+id/etLastName"
-        app:layout_constraintTop_toBottomOf="@+id/etStudentId" />
+        android:hint="First Name"
+        app:layout_constraintEnd_toEndOf="@+id/etCNLastName"
+        app:layout_constraintTop_toBottomOf="@+id/etCNStudentId" />
 
     <EditText
-        android:id="@+id/etLastName"
+        android:id="@+id/etCNLastName"
         android:layout_width="386dp"
         android:layout_height="50dp"
         android:layout_marginTop="20dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Last Name"
-        app:layout_constraintEnd_toEndOf="@+id/etTitle"
-        app:layout_constraintTop_toBottomOf="@+id/etFirstName" />
+        android:hint="Last Name"
+        app:layout_constraintEnd_toEndOf="@+id/etCNTitle"
+        app:layout_constraintTop_toBottomOf="@+id/etCNFirstName" />
 
     <EditText
-        android:id="@+id/etTitle"
+        android:id="@+id/etCNTitle"
         android:layout_width="386dp"
         android:layout_height="50dp"
         android:layout_marginTop="20dp"
         android:ems="10"
         android:inputType="text"
-        android:text="Title"
-        app:layout_constraintEnd_toEndOf="@+id/etDesc"
-        app:layout_constraintTop_toBottomOf="@+id/etLastName" />
+        android:hint="Title"
+        app:layout_constraintEnd_toEndOf="@+id/etCNDesc"
+        app:layout_constraintTop_toBottomOf="@+id/etCNLastName" />
 
     <EditText
-        android:id="@+id/etDesc"
+        android:id="@+id/etCNDesc"
         android:layout_width="386dp"
         android:layout_height="50dp"
         android:layout_marginTop="20dp"
         android:ems="10"
         android:inputType="text"
-        android:text="Description"
-        app:layout_constraintEnd_toEndOf="@+id/etYear"
-        app:layout_constraintTop_toBottomOf="@+id/etTitle" />
+        android:hint="Description"
+        app:layout_constraintEnd_toEndOf="@+id/etCNYear"
+        app:layout_constraintTop_toBottomOf="@+id/etCNTitle" />
 
     <EditText
-        android:id="@+id/etYear"
+        android:id="@+id/etCNYear"
         android:layout_width="386dp"
         android:layout_height="50dp"
         android:layout_marginTop="20dp"
         android:ems="10"
         android:inputType="number"
-        android:text="Year"
+        android:hint="Year"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etDesc" />
+        app:layout_constraintTop_toBottomOf="@+id/etCNDesc" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

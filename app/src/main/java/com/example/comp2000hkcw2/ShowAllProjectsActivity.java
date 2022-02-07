@@ -20,6 +20,7 @@ import com.example.comp2000hkcw2.controller.Service;
 import com.example.comp2000hkcw2.controller.ServiceGenerator;
 import com.example.comp2000hkcw2.model.Project;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -29,8 +30,8 @@ import retrofit2.Response;
 public class ShowAllProjectsActivity extends AppCompatActivity {
 
     private Service service;
-    private ListView listView;
     private ProgressBar progressBar;
+    ListView listView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,7 +58,7 @@ public class ShowAllProjectsActivity extends AppCompatActivity {
 
                 ArrayAdapter<Project> adapter = new ArrayAdapter<Project>(
                         ShowAllProjectsActivity.this,
-                        android.R.layout.activity_list_item,
+                        android.R.layout.simple_list_item_1,
                         android.R.id.text1,
                         projects
                 ) {

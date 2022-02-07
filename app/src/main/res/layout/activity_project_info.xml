@@ -1,323 +1,259 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ProjectInfoActivity">
 
-    <TextView
-        android:id="@+id/tv"
-        android:layout_width="243dp"
-        android:layout_height="39dp"
-        android:fontFamily="sans-serif-smallcaps"
-        android:padding="5dp"
-        android:text="Project Details"
-        android:textAlignment="center"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/tv1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:layout_weight="1"
-        android:fontFamily="sans-serif-smallcaps"
-        android:padding="5dp"
-        android:text="Project ID"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv" />
-
-    <TextView
-        android:id="@+id/tvPIProjectId"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:fontFamily="sans-serif-medium"
-        android:maxLines="8"
-        android:textSize="16sp"
-        android:padding="1dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv1" />
-
-    <TextView
-        android:id="@+id/tv2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:fontFamily="sans-serif-smallcaps"
-        android:text="Student ID"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        android:padding="1dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvPIProjectId" />
-
-    <TextView
-        android:id="@+id/tvPIStudentId"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:fontFamily="sans-serif-medium"
-        android:maxLines="8"
-        android:textSize="16sp"
-        android:padding="1dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv2" />
-
-    <TextView
-        android:id="@+id/tv8"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:fontFamily="sans-serif-smallcaps"
-        android:text="First Name"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        android:padding="1dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvPIStudentId" />
-
-    <TextView
-        android:id="@+id/tvPIFirstName"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:fontFamily="sans-serif-medium"
-        android:maxLines="8"
-        android:textSize="16sp"
-        android:padding="1dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv8" />
-
-    <TextView
-        android:id="@+id/tv9"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:fontFamily="sans-serif-smallcaps"
-        android:text="Last Name"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        android:padding="1dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvPIFirstName" />
-
-    <TextView
-        android:id="@+id/tvPILastName"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="2dp"
-        android:layout_weight="1"
-        android:fontFamily="sans-serif-medium"
-        android:maxLines="8"
-        android:textSize="16sp"
-        android:padding="1dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv9" />
-
-    <TextView
-        android:id="@+id/tv3"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:fontFamily="sans-serif-smallcaps"
-        android:text="Title"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        android:padding="1dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvPILastName" />
-
-    <TextView
-        android:id="@+id/tvPITitle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:fontFamily="sans-serif-medium"
-        android:maxLines="8"
-        android:textSize="16sp"
-        android:padding="1dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv3" />
-
-    <TextView
-        android:id="@+id/tv4"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:fontFamily="sans-serif-smallcaps"
-        android:text="Description"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        android:padding="1dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvPITitle" />
-
-    <TextView
-        android:id="@+id/tvPIDesc"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="1dp"
-        android:layout_weight="1"
-        android:fontFamily="sans-serif-medium"
-        android:maxLines="8"
-        android:textSize="16sp"
-        android:padding="1dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv4" />
-
-    <TextView
-        android:id="@+id/tv5"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:fontFamily="sans-serif-smallcaps"
-        android:text="Year"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        android:padding="1dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvPIDesc" />
-
-    <TextView
-        android:id="@+id/tvPIYear"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:fontFamily="sans-serif-medium"
-        android:textSize="16sp"
-        android:padding="1dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv5" />
-
-    <TextView
-        android:id="@+id/tv6"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:fontFamily="sans-serif-smallcaps"
-        android:text="Thumbnail URL"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        android:padding="1dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvPIYear" />
-
-    <TextView
-        android:id="@+id/tvPIThumbnailURL"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:fontFamily="sans-serif-medium"
-        android:maxLines="4"
-        android:textSize="16sp"
-        android:padding="1dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv6" />
-
-    <TextView
-        android:id="@+id/tv7"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:fontFamily="sans-serif-smallcaps"
-        android:text="Poster URL"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        android:padding="1dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvPIThumbnailURL" />
-
-    <TextView
-        android:id="@+id/tvPIPosterURL"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="2dp"
-        android:layout_weight="1"
-        android:fontFamily="sans-serif-medium"
-        android:maxLines="4"
-        android:textSize="16sp"
-        android:padding="1dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv7" />
-
-    <TextView
-        android:id="@+id/tv10"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:fontFamily="sans-serif-smallcaps"
-        android:text="Project Image"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        android:padding="1dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvPIPosterURL" />
-
-    <ImageView
-        android:id="@+id/ivPIPhoto"
-        android:layout_width="match_parent"
-        android:layout_height="110dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginBottom="30dp"
-        android:contentDescription="No Image"
+    <LinearLayout
+        android:id="@+id/linearLayout4"
+        android:layout_width="413dp"
+        android:layout_height="566dp"
+        android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.538"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv10"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toTopOf="parent">
 
-    <Button
-        android:id="@+id/btnPIHome"
-        android:layout_width="185dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginBottom="16dp"
-        android:text="Home"
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_margin="5dp"
+            android:orientation="horizontal"
+            android:weightSum="2"
+            app:layout_constraintBottom_toTopOf="@+id/linearLayout3"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <TextView
+                android:id="@+id/tv1"
+                android:layout_width="200dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:fontFamily="sans-serif-smallcaps"
+                android:text="Project ID"
+                android:textAlignment="center"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv2"
+                android:layout_width="200dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:fontFamily="sans-serif-smallcaps"
+                android:text="Student ID"
+                android:textAlignment="center"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayout3"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_margin="5dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="4dp"
+            android:orientation="horizontal"
+            android:weightSum="2"
+            app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <TextView
+                android:id="@+id/tvPIProjectId"
+                android:layout_width="200dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:fontFamily="sans-serif-medium"
+                android:maxLines="8"
+                android:textAlignment="center"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/tvPIStudentId"
+                android:layout_width="200dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:fontFamily="sans-serif-medium"
+                android:maxLines="8"
+                android:textAlignment="center"
+                android:textSize="14sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayout2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:orientation="horizontal"
+            android:weightSum="2"
+            app:layout_constraintBottom_toTopOf="@+id/etPITitle"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <EditText
+                android:id="@+id/etPIFirstName"
+                android:layout_width="200dp"
+                android:layout_height="match_parent"
+                android:fontFamily="sans-serif-medium"
+                android:hint="First Name"
+                android:maxLines="8"
+                android:textSize="14sp"
+                tools:ignore="TouchTargetSizeCheck" />
+
+            <EditText
+                android:id="@+id/etPILastName"
+                android:layout_width="200dp"
+                android:layout_height="match_parent"
+                android:fontFamily="sans-serif-medium"
+                android:hint="Last Name"
+                android:maxLines="8"
+                android:textSize="14sp"
+                tools:ignore="TouchTargetSizeCheck" />
+        </LinearLayout>
+
+        <EditText
+            android:id="@+id/etPITitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-medium"
+            android:hint="Title"
+            android:maxLines="8"
+            android:minHeight="48dp"
+            android:textAlignment="center"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toTopOf="@+id/etPIDesc"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <EditText
+            android:id="@+id/etPIDesc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-medium"
+            android:hint="Description"
+            android:maxLines="8"
+            android:minHeight="48dp"
+            android:textAlignment="center"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toTopOf="@+id/etPIYear"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <EditText
+            android:id="@+id/etPIYear"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-medium"
+            android:hint="Year"
+            android:minHeight="48dp"
+            android:textAlignment="center"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toTopOf="@+id/etPIThumbnailURL"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <EditText
+            android:id="@+id/etPIThumbnailURL"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-medium"
+            android:hint="Thumbnail URL"
+            android:maxLines="4"
+            android:minHeight="48dp"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toTopOf="@+id/etPIPosterURL"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <EditText
+            android:id="@+id/etPIPosterURL"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:fontFamily="sans-serif-medium"
+            android:hint="Poster URL"
+            android:maxLines="4"
+            android:minHeight="48dp"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toTopOf="@+id/tv10"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/tv10"
+            android:layout_width="126dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="148dp"
+            android:fontFamily="sans-serif-smallcaps"
+            android:text="Project Image"
+            android:textAlignment="center"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/ivPIPhoto"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <ImageView
+            android:id="@+id/ivPIPhoto"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="50dp"
+            android:contentDescription="No Image"
+            app:layout_constraintBottom_toTopOf="@+id/btnPIHome"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="2"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
-        android:id="@+id/btnPIEditInfo"
-        android:layout_width="185dp"
-        android:layout_height="48dp"
-        android:layout_marginEnd="16dp"
-        android:text="Edit Info"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/btnPIHome"
-        app:layout_constraintTop_toTopOf="@+id/btnPIHome" />
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout4">
+
+        <Button
+            android:id="@+id/btnPIHome"
+            android:layout_width="180dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginBottom="16dp"
+            android:layout_weight="1"
+            android:text="Home"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <Button
+            android:id="@+id/btnPIEditInfo"
+            android:layout_width="180dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:layout_weight="1"
+            android:text="Edit Info"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@+id/btnPIHome"
+            app:layout_constraintTop_toTopOf="@+id/btnPIHome"
+            app:layout_constraintVertical_bias="0.0" />
+
+    </LinearLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

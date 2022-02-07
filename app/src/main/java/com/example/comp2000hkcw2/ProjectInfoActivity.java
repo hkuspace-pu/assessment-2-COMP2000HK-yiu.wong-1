@@ -23,23 +23,23 @@ import retrofit2.Response;
 
 public class ProjectInfoActivity extends AppCompatActivity {
 
-    Bundle intentExtra;
+    //Bundle intentExtra;
 
     private Service service;
 
     private TextView tvProjectId;
     private TextView tvStudentId;
-    private TextView tvFirstName;
-    private TextView tvLastName;
-    private TextView tvTitle;
-    private TextView tvDesc;
-    private TextView tvYear;
-    private TextView tvThumbnailURL;
-    private TextView tvPosterURL;
+    private EditText etFirstName;
+    private EditText etLastName;
+    private EditText etTitle;
+    private EditText etDesc;
+    private EditText etYear;
+    private EditText etThumbnailURL;
+    private EditText etPosterURL;
     private ImageView ivPhoto;
 
-    private Button btnPIHome;
-    private Button btnPIEditInfo;
+    Button btnPIHome;
+    Button btnPIEditInfo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,8 +48,12 @@ public class ProjectInfoActivity extends AppCompatActivity {
 
         this.service = ServiceGenerator.getInstance().getService();
 
+        btnPIHome = findViewById(R.id.btnPIHome);
+        btnPIEditInfo = findViewById(R.id.btnPIEditInfo);
+
         btnPIHome.setOnClickListener(View -> {
-            Intent i = new Intent(ProjectInfoActivity.this, MainActivity.class);
+           Intent intent = new Intent(ProjectInfoActivity.this, MainActivity.class);
+           startActivity(intent);
         });
 
         btnPIEditInfo.setOnClickListener(View -> {
@@ -58,24 +62,23 @@ public class ProjectInfoActivity extends AppCompatActivity {
 
         this.tvProjectId = (TextView) findViewById(R.id.tvPIProjectId);
         this.tvStudentId = (TextView) findViewById(R.id.tvPIStudentId);
-        this.tvFirstName = (TextView) findViewById(R.id.tvPIFirstName);
-        this.tvLastName = (TextView) findViewById(R.id.tvPILastName);
-        this.tvTitle = (TextView) findViewById(R.id.tvPITitle);
-        this.tvDesc = (TextView) findViewById(R.id.tvPIDesc);
-        this.tvYear = (TextView) findViewById(R.id.tvPIYear);
-        this.tvThumbnailURL = (TextView) findViewById(R.id.tvPIThumbnailURL);
-        this.tvPosterURL = (TextView) findViewById(R.id.tvPIPosterURL);
+        this.etFirstName = (EditText) findViewById(R.id.etPIFirstName);
+        this.etLastName = (EditText) findViewById(R.id.etPILastName);
+        this.etTitle = (EditText) findViewById(R.id.etPITitle);
+        this.etDesc = (EditText) findViewById(R.id.etPIDesc);
+        this.etYear = (EditText) findViewById(R.id.etPIYear);
+        this.etThumbnailURL = (EditText) findViewById(R.id.etPIThumbnailURL);
+        this.etPosterURL = (EditText) findViewById(R.id.etPIPosterURL);
         this.ivPhoto = (ImageView) findViewById(R.id.ivPIPhoto);
 
-        intentExtra = getIntent().getExtras();
-
-        if(intentExtra != null) {
+        /* intentExtra = getIntent().getExtras();
+        if (intentExtra != null) {
             String projectIDMA = intentExtra.getString("maProjectID");
             tvProjectId.setText(projectIDMA);
-        }
+        } */
 
         Intent intent = getIntent();
-        Integer projectId = intent.getIntExtra(R.id.tvPIProjectId);
+        Integer projectId = intent.getIntExtra("projectId", -1);
 
             //call API to get project by projectId
             Call<Project> call = service.getProjectById(projectId);
@@ -93,31 +96,31 @@ public class ProjectInfoActivity extends AppCompatActivity {
                     tvStudentId.setText(project.getStudentID().toString());
 
                     if(project.getFirst_Name() != null) {
-                        tvFirstName.setText(project.getFirst_Name());
+                        etFirstName.setText(project.getFirst_Name());
                     }
 
                     if(project.getSecond_Name() != null) {
-                        tvLastName.setText(project.getSecond_Name());
+                        etLastName.setText(project.getSecond_Name());
                     }
 
                     if(project.getTitle() != null) {
-                        tvTitle.setText(project.getTitle());
+                        etTitle.setText(project.getTitle());
                     }
 
                     if(project.getDescription() != null) {
-                        tvDesc.setText(project.getDescription());
+                        etDesc.setText(project.getDescription());
                     }
 
                     if(project.getYear() != null) {
-                        tvYear.setText(project.getYear().toString());
+                        etYear.setText(project.getYear().toString());
                     }
 
                     if(project.getThumbnailURL() != null) {
-                        tvThumbnailURL.setText(project.getThumbnailURL());
+                        etThumbnailURL.setText(project.getThumbnailURL());
                     }
 
                     if(project.getPosterURL() != null) {
-                        tvPosterURL.setText(project.getPosterURL());
+                        etPosterURL.setText(project.getPosterURL());
                     }
 
                     if (project.getPhoto() != null) {
@@ -136,3 +139,4 @@ public class ProjectInfoActivity extends AppCompatActivity {
         });
     }
 }
+

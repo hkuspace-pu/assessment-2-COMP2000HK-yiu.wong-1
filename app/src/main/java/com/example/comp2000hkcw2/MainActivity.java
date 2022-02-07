@@ -1,15 +1,22 @@
 package com.example.comp2000hkcw2;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.comp2000hkcw2.controller.Service;
 import com.example.comp2000hkcw2.controller.ServiceGenerator;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -41,23 +48,22 @@ public class MainActivity extends AppCompatActivity {
         btnDeleteProj = findViewById(R.id.btnDeleteProj);
         btnProjImageUpload = findViewById(R.id.btnProjImageUpload);
 
-        btnSearchById.setOnClickListener(view -> {
-            String projectIDMA = etProjectID.getText().toString();
-            Intent intent = new Intent(MainActivity.this, ProjectInfoActivity.class);
-            intent.putExtra("maProjectID", projectIDMA);
-            startActivity(intent);
-        });
-
-        btnListAllProjects.setOnClickListener(view -> gotoShowAllProj());
-
+        btnSearchById.setOnClickListener(view -> gotoProjInfo());
         btnCreateNew.setOnClickListener(view -> gotoCreateNew());
-
         btnUpdate.setOnClickListener(view -> gotoProjUpdate());
-
         btnDeleteProj.setOnClickListener(view -> gotoDeleteProj());
-
+        btnListAllProjects.setOnClickListener(view -> gotoShowAllProj());
         btnProjImageUpload.setOnClickListener(view -> gotoProjImgUpload());
 
+    }
+
+    private void gotoProjInfo() {
+        String str = this.etProjectID.getText().toString();
+        Integer projectId = Integer.parseInt(str);
+        Intent intent = new Intent(this, ProjectInfoActivity.class);
+        intent.putExtra("projectId", projectId);
+        startActivity(intent);
+        ;
     }
 
     private void gotoShowAllProj() {
@@ -79,22 +85,71 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-
-    private void gotoProjUpdate() {
-
+    private void gotoCreateNew() {
+        Intent intent = new Intent(MainActivity.this, CreateNewActivity.class);
+        startActivity(intent);
     }
 
-    private void gotoCreateNew() {
-
+    private void gotoProjUpdate() {
+        String str = this.etProjectID.getText().toString();
+        Integer projectId = Integer.parseInt(str);
+        Intent intent = new Intent(this, ProjectInfoActivity.class);
+        intent.putExtra("projectId", projectId);
+        startActivity(intent);
+        ;
     }
 
     private void gotoDeleteProj() {
+        //int i = Integer.parseInt((String).getTag());
 
+        AlertDialog.Builder alert = new AlertDialog.Builder(MainActivity.this);
+        alert.setTitle("Project Delete Confirmation");
+        alert.setMessage("CONFIRM DELETE?");
+        alert.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                etProjectID = findViewById(R.id.etMAProjectId);
+                String str = etProjectID.getText().toString();
+                Integer projectId = Integer.parseInt(str);
+                Call<Void> call = service.delete(projectId);
+                call.enqueue(new Callback<Void>() {
+                    @Override
+                    //Asynctask
+                    public void onResponse(Call<Void> call, Response<Void> response) {
+                        int code = response.code();
+                        Log.d("[d]", "response status code: " + code);
+                        if (code == 204) {
+                            //Log.d("[d]", "Project " + projectId + " Deleted");
+                            Toast.makeText(getApplicationContext(), "Project Deleted!", Toast.LENGTH_LONG).show();
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call call, Throwable t) {
+                        Log.d("[d]", "Error: " + t.toString());
+                    }
+                });
+
+                dialog.dismiss();
+            }
+        });
+
+        alert.setNegativeButton("No", new DialogInterface.OnClickListener() {
+
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+
+        alert.show();
     }
 
     private void gotoProjImgUpload() {
 
     }
+}
 
     /*
 
@@ -133,7 +188,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     */
-}
 
 
 

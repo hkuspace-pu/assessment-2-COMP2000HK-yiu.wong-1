@@ -9,6 +9,13 @@
     android:orientation="vertical"
     tools:context=".ShowAllProjectsActivity">
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:id="@+id/header">
+
+    </RelativeLayout>
+
     <ProgressBar
         android:id="@+id/pbLoading"
         android:layout_width="match_parent"
@@ -19,7 +26,8 @@
     <ListView
            android:id="@+id/listview"
            android:layout_width="match_parent"
-           android:layout_height="wrap_content">
+           android:layout_height="wrap_content"
+        android:layout_below="@id/header">
 
        </ListView>
 
