@@ -82,6 +82,7 @@ public class ShowAllProjectsActivity extends AppCompatActivity {
             public void onFailure(Call<List<Project>> call, Throwable t) {
                 Log.e("[e]", "Error: " + t.toString());
                 Toast.makeText(ShowAllProjectsActivity.this, "ERROR OCCURRED!", Toast.LENGTH_LONG).show();
+                return;
             }
         });
     }

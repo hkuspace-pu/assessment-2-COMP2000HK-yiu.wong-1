@@ -2,6 +2,7 @@ package com.example.comp2000hkcw2;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
@@ -19,7 +20,6 @@ import retrofit2.Response;
 public class CreateNewActivity extends AppCompatActivity {
 
     private Service service;
-
     private EditText etStudentId;
     private EditText etFirstName;
     private EditText etLastName;
@@ -43,29 +43,67 @@ public class CreateNewActivity extends AppCompatActivity {
         this.etDesc = (EditText) findViewById(R.id.etCNDesc);
         this.etYear = (EditText) findViewById(R.id.etCNYear);
 
-        Project p = new Project();
-        p.setStudentID(getText().toString());
+        btnCreateProject.setOnClickListener(View -> gotoCreateProj());
+    }
 
-        btnCreateProject.setOnClickListener(View -> {
-            Call<Void> call = service.create(p);
-            call.enqueue(new Callback<Void>() {
-                @Override
-                //Asynctask
-                public void onResponse(Call<Void> call, Response<Void> response) {
-                    int code = response.code();
-                    Log.d("[d]", "response status code: " + code);
-                    if (code == 201)
-                    {
-                        Log.d("[d]", "Project Created!");
-                        Toast.makeText(getApplicationContext(), "Project Created Successfully!", Toast.LENGTH_LONG).show();
-                    }
-                }
+    public void gotoCreateProj() {
+        Project p01 = new Project();
+        p01.setStudentID(R.id.etCNStudentId);
+        p01.setTitle(etTitle.getText().toString());
+        p01.setDescription(etDesc.getText().toString());
+        p01.setYear(R.id.etCNYear);
+        p01.setFirst_Name(etFirstName.getText().toString());
+        p01.setSecond_Name(etLastName.getText().toString());
 
-                @Override
-                public void onFailure(Call call, Throwable t) {
-                    Log.d("[d]", "Error: " + t.toString());
+        Call<Void> call = service.create(p01);
+        call.enqueue(new Callback<Void>() {
+            @Override
+            public void onResponse(Call<Void> call, Response<Void> response) {
+                int code = response.code();
+                Log.d("[d]", "response status code: " + code);
+                if (code == 201)
+                {
+                    Log.d("[d]", "Project Created!");
+                    Toast.makeText(getApplicationContext(), "Project Created Successfully!", Toast.LENGTH_LONG).show();
                 }
-            });
+            }
+
+            @Override
+            public void onFailure(Call call, Throwable t) {
+                Log.d("[d]", "Error: " + t.toString());
+            }
         });
     }
+
+        /*{
+            if (etStudentId.getText().toString().isEmpty()) {
+                Toast.makeText(CreateNewActivity.this, "Must Fill in Student ID!", Toast.LENGTH_SHORT).show();
+                return;
+            }
+            postProject(etStudentId.getText().toString(), etFirstName.getText().toString(), etLastName.getText().toString(), etTitle.getText().toString(), etDesc.getText().toString(), etYear.getText().toString());
+        });
+    }
+
+    private void postProject(String studentId, String firstName, String lastName, String title, String desc, String year) {
+
+        Project project = new Project();
+        Call<Void> call = service.create(project);
+        call.enqueue(new Callback<Void>() {
+            @Override
+            public void onResponse(Call<Void> call, Response<Void> response) {
+                int code = response.code();
+                Log.d("[d]", "response status code: " + code);
+                if (code == 201) {
+                    Log.d("[d]", "Project Created!");
+                    Toast.makeText(CreateNewActivity.this, "Project Created Successfully!", Toast.LENGTH_LONG).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call call, Throwable t) {
+                Log.d("[d]", "Error: " + t.toString());
+            }
+        });
+
+         */
 }

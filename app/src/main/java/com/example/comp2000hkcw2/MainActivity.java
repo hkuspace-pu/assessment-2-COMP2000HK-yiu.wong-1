@@ -2,11 +2,18 @@ package com.example.comp2000hkcw2;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -14,6 +21,12 @@ import android.widget.Toast;
 import com.example.comp2000hkcw2.controller.Service;
 import com.example.comp2000hkcw2.controller.ServiceGenerator;
 
+import java.io.File;
+
+import okhttp3.MediaType;
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -29,14 +42,15 @@ public class MainActivity extends AppCompatActivity {
     Button btnDeleteProj;
     Button btnProjImageUpload;
 
-    // private String CHANNEL_ID = "channel";
-    // private int notificationId = 100;
+    private String CHANNEL_ID = "channel";
+    private int notificationId = 100;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        //createNotificationChannel();
+        createNotificationChannel();
+
         this.service = ServiceGenerator.getInstance().getService();
 
         etProjectID = findViewById(R.id.etMAProjectId);
@@ -57,13 +71,9 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private void gotoProjInfo() {
-        String str = this.etProjectID.getText().toString();
-        Integer projectId = Integer.parseInt(str);
-        Intent intent = new Intent(this, ProjectInfoActivity.class);
-        intent.putExtra("projectId", projectId);
+    private void gotoCreateNew() {
+        Intent intent = new Intent(MainActivity.this, CreateNewActivity.class);
         startActivity(intent);
-        ;
     }
 
     private void gotoShowAllProj() {
@@ -85,8 +95,11 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private void gotoCreateNew() {
-        Intent intent = new Intent(MainActivity.this, CreateNewActivity.class);
+    private void gotoProjInfo() {
+        String str = this.etProjectID.getText().toString();
+        Integer projectId = Integer.parseInt(str);
+        Intent intent = new Intent(this, ProjectInfoActivity.class);
+        intent.putExtra("projectId", projectId);
         startActivity(intent);
     }
 
@@ -96,12 +109,9 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, ProjectInfoActivity.class);
         intent.putExtra("projectId", projectId);
         startActivity(intent);
-        ;
     }
 
     private void gotoDeleteProj() {
-        //int i = Integer.parseInt((String).getTag());
-
         AlertDialog.Builder alert = new AlertDialog.Builder(MainActivity.this);
         alert.setTitle("Project Delete Confirmation");
         alert.setMessage("CONFIRM DELETE?");
@@ -147,13 +157,41 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void gotoProjImgUpload() {
-
+        Intent intent = new Intent(MainActivity.this, PhotoUploadActivity.class);
+        startActivity(intent);
     }
-}
 
-    /*
+      /* File file = new File("/storage/emulated/0/Download/fireb01.jpg");
+        if (!file.exists()) {
+            Log.e("[d]", "Image NOT found!");
+            Toast.makeText(getApplicationContext(), "IMAGE NOT FOUND!", Toast.LENGTH_LONG).show();
+        } else {
+            RequestBody requestFile = RequestBody.create(MediaType.parse("multipart/form-data"), file);
+            MultipartBody.Part part = MultipartBody.Part.createFormData("file", file.getName(), requestFile);
+            RequestBody requestBody = RequestBody.create(MediaType.parse("multipart/form-data"), "file");
 
-        public void imageUploadedNotification(View view) {
+            etProjectID = findViewById(R.id.etMAProjectId);
+            String str = etProjectID.getText().toString();
+            Integer projectId = Integer.parseInt(str);
+            Call<ResponseBody> call = service.uploadImage(projectId, requestBody, part);
+            call.enqueue(new Callback<ResponseBody>() {
+                @Override
+                public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                    int code = response.code();
+                    Log.d("[d]", "response status code: " + code);
+                    if (code == 201) {
+                        //Log.d("[d]", "Image " + file.getAbsolutePath() + " Uploaded");
+                        Toast.makeText(getApplicationContext(), "Photo Uploaded Successfully!!", Toast.LENGTH_LONG).show();
+                    }
+                }
+
+                @Override
+                public void onFailure(Call call, Throwable t) {
+                    Log.d("[d]", "Error: " + t.toString());
+                }
+            }); */
+
+    public void imageUploadedNotification(View view) {
         Intent intent = new Intent(this, MainActivity.class);
         intent.setAction(Intent.ACTION_MAIN);
         intent.addCategory(Intent.CATEGORY_LAUNCHER);
@@ -164,7 +202,7 @@ public class MainActivity extends AppCompatActivity {
         NotificationCompat.Builder builder = new NotificationCompat.Builder(this, CHANNEL_ID);
         builder.setContentTitle("Image Upload")
                 .setContentText("Upload in progress")
-                .setSmallIcon(R.drawable.noti)
+                .setSmallIcon(R.drawable.ic_baseline_check_24)
                 .setPriority(NotificationCompat.PRIORITY_LOW);
 
         int PROGRESS_MAX = 100;
@@ -186,68 +224,10 @@ public class MainActivity extends AppCompatActivity {
             notificationManager.createNotificationChannel(channel);
         }
     }
-
-    */
-
+}
 
 
-        /* public void showAllProjects() {
-
-        Call<List<Project>> call = service.getAllProjects();
-        call.enqueue(new Callback<List<Project>>() {
-            @Override
-            //Asynctask
-            public void onResponse(Call<List<Project>> call, Response<List<Project>> response) {
-                List<Project> projectList = response.body();
-                //check if project list is empty
-                if (projectList == null)
-                {
-                    Log.d("[d]", "NO PROJECT FOUND!");
-                    Toast.makeText(getApplicationContext(), "NO PROJECT FOUND", Toast.LENGTH_LONG).show();
-                }
-                else
-                {
-                    for (int i = 0; i < projectList.size(); i++)
-                    {
-                        Project project = projectList.get(i);
-                        Log.d("[d]", project.toString());
-                    }
-                }
-            }
-
-            @Override
-            public void onFailure(Call call, Throwable t) {
-                Log.d("[d]", "Error: " + t.toString());
-            }
-        });
-    }
-
-    /* public void getProjectById(Integer projectId) {
-        Call<Project> call = service.getProjectById(projectId);
-        call.enqueue(new Callback<Project>() {
-            @Override
-            //Asynctask
-            public void onResponse(Call<Project> call, Response<Project> response) {
-                Project project = response.body();
-                if (project == null)
-                {
-                    Log.d("[d]", "PROJECT NOT FOUND!");
-                    Toast.makeText(getApplicationContext(), "PROJECT NOT FOUND!", Toast.LENGTH_LONG).show();
-                }
-                else
-                {
-                    Log.d("[d]", project.toString());
-                }
-            }
-
-            @Override
-            public void onFailure(Call call, Throwable t) {
-                Log.d("[d]", "Error: " + t.toString());
-            }
-        });
-    }
-
-    public void createNewProject() {
+/*    public void createNewProject() {
         Project p01 = new Project();
         p01.setStudentID(1445996872);
         p01.setTitle("XOXOXOXOXOXOXOXOXOXOXOXOXOXOX");
@@ -331,29 +311,6 @@ public class MainActivity extends AppCompatActivity {
                 {
                     //Log.d("[d]", "Project " + projectId + " Info Updated!");
                     Toast.makeText(getApplicationContext(), "Project Info Updated!", Toast.LENGTH_LONG).show();
-                }
-            }
-
-            @Override
-            public void onFailure(Call call, Throwable t) {
-                Log.d("[d]", "Error: " + t.toString());
-            }
-        });
-    }
-
-    public void deleteProject(Integer projectId)
-    {
-        Call<Void> call = service.delete(projectId);
-        call.enqueue(new Callback<Void>() {
-            @Override
-            //Asynctask
-            public void onResponse(Call<Void> call, Response<Void> response) {
-                int code = response.code();
-                Log.d("[d]", "response status code: " + code);
-                if (code == 204)
-                {
-                    //Log.d("[d]", "Project " + projectId + " Deleted");
-                    Toast.makeText(getApplicationContext(), "Project Deleted!", Toast.LENGTH_LONG).show();
                 }
             }
 

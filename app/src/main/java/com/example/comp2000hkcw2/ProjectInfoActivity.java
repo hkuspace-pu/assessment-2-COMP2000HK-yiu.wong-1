@@ -1,7 +1,9 @@
 package com.example.comp2000hkcw2;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -12,6 +14,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.comp2000hkcw2.controller.ServiceGenerator;
 import com.example.comp2000hkcw2.controller.Service;
@@ -22,8 +25,6 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class ProjectInfoActivity extends AppCompatActivity {
-
-    //Bundle intentExtra;
 
     private Service service;
 
@@ -51,14 +52,8 @@ public class ProjectInfoActivity extends AppCompatActivity {
         btnPIHome = findViewById(R.id.btnPIHome);
         btnPIEditInfo = findViewById(R.id.btnPIEditInfo);
 
-        btnPIHome.setOnClickListener(View -> {
-           Intent intent = new Intent(ProjectInfoActivity.this, MainActivity.class);
-           startActivity(intent);
-        });
-
-        btnPIEditInfo.setOnClickListener(View -> {
-
-        });
+        btnPIHome.setOnClickListener(View -> gotoBackHome());
+        btnPIEditInfo.setOnClickListener(View -> gotoEditInfo());
 
         this.tvProjectId = (TextView) findViewById(R.id.tvPIProjectId);
         this.tvStudentId = (TextView) findViewById(R.id.tvPIStudentId);
@@ -70,12 +65,6 @@ public class ProjectInfoActivity extends AppCompatActivity {
         this.etThumbnailURL = (EditText) findViewById(R.id.etPIThumbnailURL);
         this.etPosterURL = (EditText) findViewById(R.id.etPIPosterURL);
         this.ivPhoto = (ImageView) findViewById(R.id.ivPIPhoto);
-
-        /* intentExtra = getIntent().getExtras();
-        if (intentExtra != null) {
-            String projectIDMA = intentExtra.getString("maProjectID");
-            tvProjectId.setText(projectIDMA);
-        } */
 
         Intent intent = getIntent();
         Integer projectId = intent.getIntExtra("projectId", -1);
@@ -131,12 +120,57 @@ public class ProjectInfoActivity extends AppCompatActivity {
                     }
                 }
             }
-
             @Override
             public void onFailure(Call call, Throwable t) {
-                Log.d("[d]", "Error: " + t.toString());
+                Log.d("[d]", "Error: " + t);
             }
         });
     }
+
+        public void gotoBackHome() {
+            Intent intent = new Intent(ProjectInfoActivity.this, MainActivity.class);
+            startActivity(intent);
+        }
+
+        public void gotoEditInfo() {
+        /*    AlertDialog.Builder alert = new AlertDialog.Builder(ProjectInfoActivity.this);
+            alert.setTitle("Edit Confirmation");
+            alert.setMessage("CONFIRM Edit?");
+            alert.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+
+                Project project = new Project();
+                project.setTitle("Testing ABC");
+                project.setDescription("Tester Project Revised");
+                project.setYear(2022);
+                project.setThumbnailURL("http://www.google.com");
+                project.setPosterURL("http://www.google.com");
+
+                String str = tvProjectId.getText().toString();
+                Integer projectId = Integer.parseInt(str);
+                Call<Void> call = service.update(projectId, project);
+                call.enqueue(new Callback<Void>()
+                {
+                    @Override
+                    //Asynctask
+                    public void onResponse (Call < Void > call, Response < Void > response){
+                    int code = response.code();
+                    Log.d("[d]", "response status: " + code);
+                    if (code == 204) {
+                        //Log.d("[d]", "Project " + projectId + " Info Updated!");
+                        Toast.makeText(getApplicationContext(), "Project Info Updated!", Toast.LENGTH_LONG).show();
+                    }
+                }
+
+                    @Override
+                    public void onFailure (Call call, Throwable t){
+                    Log.d("[d]", "Error: " + t.toString());
+                }
+                });
+
+            });
+
+         */
+
+        }
 }
 
