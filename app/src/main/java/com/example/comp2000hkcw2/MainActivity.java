@@ -96,19 +96,29 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void gotoProjInfo() {
-        String str = this.etProjectID.getText().toString();
-        Integer projectId = Integer.parseInt(str);
-        Intent intent = new Intent(this, ProjectInfoActivity.class);
-        intent.putExtra("projectId", projectId);
-        startActivity(intent);
+        if (etProjectID.getText().toString().isEmpty()) {
+            Toast.makeText(MainActivity.this, "Please Enter Project ID!", Toast.LENGTH_LONG).show();
+            return;
+        } else {
+            String str = this.etProjectID.getText().toString();
+            Integer projectId = Integer.parseInt(str);
+            Intent intent = new Intent(this, ProjectInfoActivity.class);
+            intent.putExtra("projectId", projectId);
+            startActivity(intent);
+        }
     }
 
     private void gotoProjUpdate() {
-        String str = this.etProjectID.getText().toString();
-        Integer projectId = Integer.parseInt(str);
-        Intent intent = new Intent(this, ProjectInfoActivity.class);
-        intent.putExtra("projectId", projectId);
-        startActivity(intent);
+        if (etProjectID.getText().toString().isEmpty()) {
+            Toast.makeText(MainActivity.this, "Please Enter Project ID!", Toast.LENGTH_LONG).show();
+            return;
+        } else {
+            String str = this.etProjectID.getText().toString();
+            Integer projectId = Integer.parseInt(str);
+            Intent intent = new Intent(this, ProjectInfoActivity.class);
+            intent.putExtra("projectId", projectId);
+            startActivity(intent);
+        }
     }
 
     private void gotoDeleteProj() {
@@ -157,39 +167,17 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void gotoProjImgUpload() {
-        Intent intent = new Intent(MainActivity.this, PhotoUploadActivity.class);
-        startActivity(intent);
-    }
-
-      /* File file = new File("/storage/emulated/0/Download/fireb01.jpg");
-        if (!file.exists()) {
-            Log.e("[d]", "Image NOT found!");
-            Toast.makeText(getApplicationContext(), "IMAGE NOT FOUND!", Toast.LENGTH_LONG).show();
+        if (etProjectID.getText().toString().isEmpty()) {
+            Toast.makeText(MainActivity.this, "Please Enter Project ID!", Toast.LENGTH_LONG).show();
+            return;
         } else {
-            RequestBody requestFile = RequestBody.create(MediaType.parse("multipart/form-data"), file);
-            MultipartBody.Part part = MultipartBody.Part.createFormData("file", file.getName(), requestFile);
-            RequestBody requestBody = RequestBody.create(MediaType.parse("multipart/form-data"), "file");
-
-            etProjectID = findViewById(R.id.etMAProjectId);
-            String str = etProjectID.getText().toString();
+            String str = this.etProjectID.getText().toString();
             Integer projectId = Integer.parseInt(str);
-            Call<ResponseBody> call = service.uploadImage(projectId, requestBody, part);
-            call.enqueue(new Callback<ResponseBody>() {
-                @Override
-                public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
-                    int code = response.code();
-                    Log.d("[d]", "response status code: " + code);
-                    if (code == 201) {
-                        //Log.d("[d]", "Image " + file.getAbsolutePath() + " Uploaded");
-                        Toast.makeText(getApplicationContext(), "Photo Uploaded Successfully!!", Toast.LENGTH_LONG).show();
-                    }
-                }
-
-                @Override
-                public void onFailure(Call call, Throwable t) {
-                    Log.d("[d]", "Error: " + t.toString());
-                }
-            }); */
+            Intent intent = new Intent(MainActivity.this, PhotoUploadActivity.class);
+            intent.putExtra("projectId", projectId);
+            startActivity(intent);
+        }
+    }
 
     public void imageUploadedNotification(View view) {
         Intent intent = new Intent(this, MainActivity.class);

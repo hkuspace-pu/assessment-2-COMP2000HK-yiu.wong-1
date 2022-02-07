@@ -27,7 +27,7 @@ public class CreateNewActivity extends AppCompatActivity {
     private EditText etDesc;
     private EditText etYear;
 
-    private Button btnCreateProject;
+    Button btnCPCreateProj;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,11 +43,11 @@ public class CreateNewActivity extends AppCompatActivity {
         this.etDesc = (EditText) findViewById(R.id.etCNDesc);
         this.etYear = (EditText) findViewById(R.id.etCNYear);
 
-        btnCreateProject.setOnClickListener(View -> gotoCreateProj());
+        btnCPCreateProj.setOnClickListener(View -> gotoCreateProj());
     }
 
-    public void gotoCreateProj() {
-        Project p01 = new Project();
+        public void gotoCreateProj() {}
+/*        Project p01 = new Project();
         p01.setStudentID(R.id.etCNStudentId);
         p01.setTitle(etTitle.getText().toString());
         p01.setDescription(etDesc.getText().toString());
